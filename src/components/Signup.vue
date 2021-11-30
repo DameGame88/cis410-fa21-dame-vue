@@ -56,7 +56,7 @@
           placeholder="Enter email"
           v-model="email"
         />
-        <small v-if="dupeEmail" class="text-danger">
+        <small v-if="dupEmail" class="text-danger">
           Please choose a different email</small
         >
       </div>
@@ -103,7 +103,7 @@ export default {
         email: this.email,
         password: this.password,
       };
-      // console.log(myFormData);
+      console.log(myFormData);
       axios
         .post("/customer", myFormData)
         .then((myResponse) => {
