@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-
+import axios from "axios";
 export default createStore({
   state: {
     token: null,
@@ -14,6 +14,16 @@ export default createStore({
     storeUserInApp(state, theUser) {
       state.user = theUser;
     },
+    storeEJuice(state, EJuice) {
+      state.EJuice = EJuice;
+    },
   },
-  actions: {},
+  actions: {
+    getEJuice({ commit }) {
+      axios.get("/EJuice").then((aResponse) => {
+        console.log("response in /Ejuice", aResponse);
+        commit("storeEJuice", aResponse.data);
+      });
+    },
+  },
 });
