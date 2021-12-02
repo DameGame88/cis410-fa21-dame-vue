@@ -8,8 +8,6 @@
           <th>Label Name</th>
           <th>Flavor</th>
           <th>Price</th>
-          <th>Nicotine Level</th>
-          <th>Style Name</th>
           <th></th>
         </tr>
       </thead>
@@ -18,8 +16,6 @@
           <th>{{ aEJuice.LabelName }}</th>
           <th>{{ aEJuice.Flavor }}</th>
           <th>{{ aEJuice.Price }}</th>
-          <th>{{ aEJuice.NicotineLevel }}</th>
-          <th>{{ aEJuice.StyleName }}</th>
           <th>
             <router-link :to="`/EJuice/${aEJuice.EJuicePK}`"
               ><button class="btn btn-primary">Details</button></router-link
