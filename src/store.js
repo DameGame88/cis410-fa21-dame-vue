@@ -1,5 +1,7 @@
 import { createStore } from "vuex";
 import axios from "axios";
+import myRoutes from "./routes.js";
+
 export default createStore({
   state: {
     token: null,
@@ -17,6 +19,10 @@ export default createStore({
     storeEJuice(state, EJuice) {
       state.EJuice = EJuice;
     },
+    clearAuthData(state) {
+      state.token = null;
+      state.user = null;
+    },
   },
   actions: {
     getEJuice({ commit }) {
@@ -24,6 +30,19 @@ export default createStore({
         console.log("response in /Ejuice", aResponse);
         commit("storeEJuice", aResponse.data);
       });
+    },
+    logout({ commit, state }) {
+      axios
+        .post("/customer/logout", null, {
+          headers: { Authorization: `Bearer ${state.token}` },
+        })
+        .then(() => {
+          commit("clearAuthData");
+          myRoutes.replace("/");
+        })
+        .catch(() => {
+          console.log("error in logging out");
+        });
     },
   },
 });
