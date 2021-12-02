@@ -17,7 +17,7 @@
         <tr v-for="thisReview in reviewsByUser" :key="thisReview.ReviewPK">
           <th>
             <router-link :to="`/EJuice/${thisReview.EJuiceFK}`">{{
-              thisReview.EJuiceFK
+              thisReview.LabelName
             }}</router-link>
           </th>
           <th>{{ thisReview.Summary }}</th>
